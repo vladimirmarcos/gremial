@@ -24,7 +24,6 @@ def convertir_mes(mes):
         if mes==12:
             return "Diciembre" 
         
-
 def procesar_dato_str(dato):
         
             dato=dato.lower()
@@ -32,3 +31,11 @@ def procesar_dato_str(dato):
             dato=dato.title() 
             return dato 
       
+def procesar_dato_int(dato):
+     try:
+        dato=int(dato)
+        return dato
+     except ValueError:
+          return None
+     
+
