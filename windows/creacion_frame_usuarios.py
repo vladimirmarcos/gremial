@@ -130,7 +130,7 @@ class FrameUserAmepp(FrameUser):
          
           dni=procesar_dato_int(self.mi_dni.get())
           if dni:
-              verificado=buscar_dni("afiliado_amepp",dni)
+              verificado=buscar_dni("afiliado_amep",dni)
               if verificado:
                   titulo=" error al registrar el usuario"
                   mensaje= "el dni ya esta registrado" 
@@ -155,9 +155,9 @@ class FrameUserAmepp(FrameUser):
                              condicion
 
                          )
-                         cargar_afiliado("afiliado_amepp",afiliado_amepp)
+                         cargar_afiliado("afiliado_amep",afiliado_amepp)
                          titulo="Se cargo exitosamente "
-                         mensaje= "el Afiliado en Amepp se cargo exitosamente" 
+                         mensaje= "el Afiliado en Amep se cargo exitosamente" 
                          messagebox.showinfo(titulo,mensaje)
 
                        
@@ -176,7 +176,7 @@ class FrameUserAdepp(FrameUser):
         self.desahabilitar_campos()
     
      def botones(self):
-            self.boton_nuevo=tk.Button(self,text="Nuevo afiliado ADEPP",command=self.habilitar_campos)
+            self.boton_nuevo=tk.Button(self,text="Nuevo afiliado ADEP",command=self.habilitar_campos)
             self.boton_nuevo.config(width=20,font=('Arial',12,'bold'),fg='#DAD5D6',bg='#158645',cursor='pirate',activebackground='#35BD6F')
             self.boton_nuevo.grid(row=6,column=0,padx=10,pady=10)
 
@@ -216,7 +216,7 @@ class FrameUserAdepp(FrameUser):
          
           dni=procesar_dato_int(self.mi_dni.get())
           if dni:
-              verificado=buscar_dni("afiliado_adepp",dni)
+              verificado=buscar_dni("afiliado_adep",dni)
               if verificado:
                   titulo=" error al registrar el usuario"
                   mensaje= "el dni ya esta registrado" 
@@ -241,7 +241,7 @@ class FrameUserAdepp(FrameUser):
                              condicion
 
                          )
-                         cargar_afiliado("afiliado_adepp",afiliado_adepp)
+                         cargar_afiliado("afiliado_adep",afiliado_adepp)
                          titulo="Se cargo exitosamente "
                          mensaje= "el Afiliado en Adepp se cargo exitosamente" 
                          messagebox.showinfo(titulo,mensaje)
