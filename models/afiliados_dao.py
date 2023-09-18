@@ -18,3 +18,65 @@ def cargar_afiliado(organizacion,Afiliado):
 
     conexion.cursor.execute(sql)
     conexion.cerrar()
+
+def buscar_nombre (nombre,organizacion):
+    conexion=ConexionDB()   
+    if nombre !="0":
+        sql=f""" SELECT nombre,dni,afiliado_id from {organizacion} WHERE nombre like '%{nombre}%'
+    """
+        conexion.cursor.execute(sql)
+        auxiliar=conexion.cursor.fetchall()
+        usuarios_encontrados=[]
+        conexion.cerrar()
+        if auxiliar:
+            usuarios_encontrados=[list(x) for x in auxiliar]   
+            return usuarios_encontrados
+        else:
+            return None
+    else:
+          sql=f""" SELECT nombre,dni from '{organizacion}'
+    """
+          conexion.cursor.execute(sql)
+          auxiliar=conexion.cursor.fetchall()
+          usuarios_encontrados=[]
+          conexion.cerrar()
+          if auxiliar:
+            usuarios_encontrados=[list(x) for x in auxiliar]   
+            return usuarios_encontrados
+          else:
+            return None
+          
+def informacion_editar(organizacion,dni):
+    conexion=ConexionDB()   
+    
+    sql=f""" SELECT nombre,dni,domicilio,mail,telefono,condicion from '{organizacion}' WHERE dni='{dni}'
+    """
+    conexion.cursor.execute(sql)
+    informacion_encontrada=conexion.cursor.fetchone()
+   
+    conexion.cerrar()
+    informacion_encontrada=list(informacion_encontrada)
+    return informacion_encontrada
+
+def informacion_editada(organizacion,campo,valor,dni):
+    conexion=ConexionDB()   
+    
+    sql=f""" update '{organizacion}' set '{campo}'='{valor}' WHERE dni='{dni}'
+    """
+    conexion.cursor.execute(sql)
+    conexion.cerrar()
+    
+def buscar_id(organizacion,id_afiliado):
+     conexion=ConexionDB()
+     sql=f""" SELECT nombre,dni from '{organizacion}' where afiliado_id={id_afiliado}
+    """
+     conexion.cursor.execute(sql)
+     auxiliar=conexion.cursor.fetchone()
+     conexion.cerrar()
+     if auxiliar:
+            auxiliar=list (auxiliar)
+            
+            return auxiliar
+     else:
+        
+            return None

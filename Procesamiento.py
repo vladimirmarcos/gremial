@@ -38,4 +38,9 @@ def procesar_dato_int(dato):
      except ValueError:
           return None
      
-
+def procesar_dato_float(dato):
+     try:
+        dato=float(dato)
+        return dato
+     except ValueError:
+          return None
