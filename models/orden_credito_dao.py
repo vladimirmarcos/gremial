@@ -104,7 +104,7 @@ def guardar_datos_fechas(fecha_vencimiento_organizacion,fecha,cuota,estado,cuent
     fecha_actual=datetime.datetime.strptime(fecha, "%m/%d/%y")
     dia_delta=datetime.timedelta(days=30)
     proxima=fecha_actual+dia_delta
-    proxima_str=datetime.datetime.strftime(proxima,"%Y/%m/%d")
+    proxima_str=datetime.datetime.strftime(proxima,"%Y%m%d")
     conexion=ConexionDB()
     sql=f"""INSERT INTO {fecha_vencimiento_organizacion} (fecha,total,estado,cuenta,orden_compra)
         VALUES ('{proxima_str}','{total}','{estado}','{cuenta}','{orden_compra}')
@@ -114,7 +114,7 @@ def guardar_datos_fechas(fecha_vencimiento_organizacion,fecha,cuota,estado,cuent
     lista_fechas.append(proxima_str)
     for i in range (cuota-1): 
        proxima=proxima+dia_delta
-       proxima_str=datetime.datetime.strftime(proxima,"%Y/%m/%d")
+       proxima_str=datetime.datetime.strftime(proxima,"%Y%m%d")
        sql=f"""INSERT INTO {fecha_vencimiento_organizacion} (fecha,total,estado,cuenta,orden_compra)
         VALUES ('{proxima_str}','{total}','{estado}','{cuenta}','{orden_compra}')
     
